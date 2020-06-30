@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{user.get_fullname()}}{% endblock %}
+
+{% block content %}
+<h1 class="title">Details Page</h1>
+
+<div class="card">
+  <div class="profile-sidebar">
+    <img class="profile-image" src="{{user.image_url}}" alt="profile picture">
+  </div>
+  <div class="profile-main">
+    <h3 class="profile-name">{{user.get_fullname()}}</h3>
+
+    <a class="btn-link pure-button" href="/users/{{user.id}}/edit">Edit</a>
+    <a class="btn-link pure-button delete" href="/users/{{user.id}}/delete">Delete</a>
+
+  </div>
+</div>
+<div class="show">
+  <a class="btn-link pure-button" href="/">Show all users</a>
+</div>
+
+{% endblock %}

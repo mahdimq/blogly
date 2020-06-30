@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	line-height: 1.6;
+	margin: 0 auto;
+	width: 80%;
+}
+
+.title {
+	text-align: center;
+}
+
+.card {
+	margin: 0 auto;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	width: 80%;
+	max-width: 700px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 2em;
+}
+
+.profile-name {
+	font-size: 2rem;
+	line-height: 1.1;
+	letter-spacing: 1px;
+}
+
+.profile-name::after {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 2em;
+	background-color: black;
+	margin: 0.5em auto;
+}
+
+.profile-image {
+	width: 150px;
+	height: 100%;
+	object-fit: contain;
+}
+
+.btn-link {
+	text-decoration: none;
+	color: white;
+}
+.pure-button {
+	border-radius: 3px;
+	background-color: rgb(21, 109, 241);
+	color: white;
+	padding: 0.5em 1.25em;
+	cursor: pointer;
+	border: none;
+	margin-left: 0.5em;
+}
+
+.delete {
+	background-color: tomato;
+}
+
+.show {
+	margin: 1em auto;
+	text-align: center;
+}
+
+.cxl {
+	background-color: #03b403;
+}
+
+.success {
+	color: #03b403;
+	background-color: rgb(222, 233, 222);
+	border-left: solid 10px #03b403;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 1em;
+	margin: 0.5em auto;
+	text-align: center;
+}
+.danger {
+	color: red;
+	background-color: rgb(255, 234, 231);
+	border-left: solid 10px red;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 1em;
+	margin: 0.5em auto;
+	text-align: center;
+}
+
+@media (min-width: 670px) {
+	.card {
+		flex-direction: row;
+	}
+	.profile-main {
+		text-align: left;
+		margin-left: 2em;
+	}
+	.profile-name::after {
+		margin-left: 0;
+	}
+}
