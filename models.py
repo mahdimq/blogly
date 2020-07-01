@@ -1,5 +1,6 @@
 """Models for Blogly."""
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 
 db = SQLAlchemy()
@@ -11,6 +12,7 @@ def connect_db(app):
 
 
 class User(db.Model):
+    """Create a schema table for users"""
     __tablename__ = 'users'
 
     def __repr__(self):
@@ -21,23 +23,34 @@ class User(db.Model):
     firstname = db.Column(db.String(50), nullable=False)
     lastname = db.Column(db.String(50), nullable=False)
     image_url = db.Column(db.String, default="https://tinyurl.com/y7akjlzy")
-    # posts = db.relationship('Post', backref='user', lazy=True) <-- for Part 2
+
+    posts = db.relationship('Post', backref='users',
+                            lazy=True, cascade="all, delete-orphan")
 
     def get_fullname(self):
         name = f'{self.firstname} {self.lastname}'
         return name
 
-# ================= FOR PART 2 =================
+# =========== PART TWO ============ #
 
-# class Post(db.Model):
-#     __tablename__ = "posts"
 
-#     def __repr__(self):
-#         p = self
-#         return f"<Post id={p.id} title={p.title} content={p.content} created_at={p.created_at}"
+class Post(db.Model):
+    """Create a schema table for user posts"""
+    __tablename__ = "posts"
 
-#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     title = db.Column(db.String(20), nullable=False)
-#     content = db.Column(db.Text, nullable=False)
-#     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    def __repr__(self):
+        p = self
+        return f"<Post id={p.id} title={p.title} content={p.content} created_at={p.created_at}"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(50), nullable=False)
+    content = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    # users = db.relationship('User', backref='posts', lazy=True)
+
+    def friendly_date(self):
+        """Create friendly date"""
+        date = self.created_at.strftime("%a %b %d %Y,  %-I:%-M %p")
+        return date

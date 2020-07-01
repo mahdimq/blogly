@@ -3,7 +3,7 @@
 {% block title %}{{user.get_fullname()}}{% endblock %}
 
 {% block content %}
-<h1 class="title">Details Page</h1>
+<h1>Details Page</h1>
 
 <div class="card">
   <div class="profile-sidebar">
@@ -11,10 +11,20 @@
   </div>
   <div class="profile-main">
     <h3 class="profile-name">{{user.get_fullname()}}</h3>
+    <div class="user-btns">
+      <a class="btn-link pure-button" href="/users/{{user.id}}/edit">Edit</a>
+      <a class="btn-link pure-button delete" href="/users/{{user.id}}/delete">Delete</a>
+    </div>
 
-    <a class="btn-link pure-button" href="/users/{{user.id}}/edit">Edit</a>
-    <a class="btn-link pure-button delete" href="/users/{{user.id}}/delete">Delete</a>
-
+    <div class="posts">
+      <h3 class="list-title">Posts</h4>
+        <ul class="list">
+          {% for post in user.posts %}
+          <li class="list-item"><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+          {% endfor %}
+        </ul>
+    </div>
+    <a class="btn-link pure-button" href="/users/{{user.id}}/posts/new">Add Post</a>
   </div>
 </div>
 <div class="show">

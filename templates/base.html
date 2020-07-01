@@ -14,7 +14,7 @@
 <body>
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% for category,msg in messages %}
-  <p class="{{category}}">{{ msg }}</p>
+  <p id="flash" class="{{category}}">{{ msg }}</p>
   {% endfor %}
   {% endwith %}
   {% block content %}{% endblock %}

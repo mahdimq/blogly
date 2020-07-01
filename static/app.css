@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300,400&family=Montserrat:wght@600&display=swap');
+
 *,
 *::before,
 *::after {
@@ -8,10 +10,7 @@ body {
 	line-height: 1.6;
 	margin: 0 auto;
 	width: 80%;
-}
-
-.title {
-	text-align: center;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .card {
@@ -37,13 +36,49 @@ body {
 	height: 1px;
 	width: 2em;
 	background-color: black;
-	margin: 0.5em auto;
+	margin: 0.3em auto 0;
 }
 
 .profile-image {
-	width: 150px;
+	width: 155px;
 	height: 100%;
 	object-fit: contain;
+}
+
+.list-title {
+	margin: 0.75em auto 0;
+}
+
+.list {
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+	margin-bottom: 0.75em;
+	padding: 0;
+}
+
+.list-item {
+	width: fit-content;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.text {
+	font-family: 'Lato', sans-serif;
+}
+
+.date {
+	font-family: 'Lato', sans-serif;
+	font-size: 0.9rem;
+	font-weight: 300;
+	font-style: italic;
+}
+
+#flash {
+	font-family: 'Lato', sans-serif;
+}
+
+.user-btns {
+	margin-top: 0;
 }
 
 .btn-link {
@@ -93,6 +128,13 @@ body {
 	margin: 0.5em auto;
 	text-align: center;
 }
+label {
+	padding-top: 0.75em;
+}
+
+textarea {
+	resize: none;
+}
 
 @media (min-width: 670px) {
 	.card {
@@ -104,5 +146,13 @@ body {
 	}
 	.profile-name::after {
 		margin-left: 0;
+	}
+	.list {
+		margin-left: 0.3em;
+	}
+	.list-item {
+		text-align: left;
+		margin-left: 0;
+		padding: 0;
 	}
 }
