@@ -14,8 +14,9 @@ connect_db(app)
 
 @app.route('/')
 def show_index():
-    """redirects user to list of users in db"""
-    return redirect("/users")
+    """renders home page with 5 latest posts"""
+    post = Post.query.order_by(Post.created_at.desc()).limit(5)
+    return render_template('home.html', post=post)
 
 
 @app.route("/users")
