@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Add New Post{% endblock %}
+
+{% block content %}
+<h3>NEW POST FORM PAGE</h3>
+<form method="POST">
+  <div class="pure-form pure-form-stacked">
+    <legend>
+      <h1>Add a post for {{user.get_fullname()}}</h1>
+    </legend>
+    <fieldset class="pure-group">
+
+      <label>Title</label>
+      <input type="text" name="title" class="pure-u-1 pure-u-md-2-3" placeholder="Title" required />
+
+      <label>Content</label>
+      <textarea rows="10" name="content" class="pure-u-1 pure-u-md-2-3" placeholder="Text here..."></textarea>
+    </fieldset>
+  </div>
+
+  {% for tag in tags %}
+  <div class="check">
+    <input class="pure-checkbox" type="checkbox" value="{{tag.id}}" id="{{tag.id}}" name="tags"
+      {% if post in tag.posts %} checked {% endif %}>
+    <label for="{{tag.id}}">{{tag.name}}</label>
+  </div>
+  {% endfor %}
+
+  <button type="submit" class="pure-button">Submit Post</button>
+  <a class="btn-link pure-button cxl" href="/users/{{user.id}}">Cancel</a>
+  <a class="btn-link pure-button" href="/tags/new">New Tag</a>
+</form>
+{% endblock %}

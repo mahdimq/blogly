@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit your post{% endblock %}
+
+{% block content %}
+<h3>EDIT POST FORM PAGE</h3>
+<form method="POST" action="/posts/{{post.id}}/edit">
+  <div class="pure-form pure-form-stacked">
+    <legend>
+      <h1>Edit post for {{post.users.get_fullname()}}</h1>
+    </legend>
+    <fieldset class="pure-group">
+
+      <label>Title</label>
+      <input type="text" name="title" value="{{post.title}}" class="pure-u-1 pure-u-md-2-3" placeholder="Title"
+        required />
+
+      <label>Content</label>
+      <textarea rows="10" name="content" class="pure-u-1 pure-u-md-2-3">{{post.content}}</textarea>
+    </fieldset>
+  </div>
+
+  {% for tag in tags %}
+  <div class="check">
+    <input class="pure-checkbox" type="checkbox" value="{{tag.id}}" id="checkbox-radio-option-one" name="tags"
+      {% if post in tag.posts %} checked {% endif %}>
+    <label for="checkbox-radio-option-one">{{tag.name}}</label>
+  </div>
+  {% endfor %}
+
+  <button type="submit" class="pure-button">Edit Post</button>
+  <a class="btn-link pure-button cxl" href="/users/{{post.user_id}}">Cancel</a>
+  <a class="btn-link pure-button" href="/tags/new">New Tag</a>
+</form>
+
+
+
+<!--
+<form>
+  {% for tag in tags %}
+    <div>
+      <p>tags go here</p>
+      <h1>tags inputs</h1>
+      <input type=" checkbox" value="{{tag.id}}" id="tag_{{tag.id}}" {% if tag in post.tags %}checked{% endif %}
+        name="tags">
+      <label for="tag_{{tag.id}}">
+        {{tag.name}}
+      </label>
+    </div>
+    {% endfor %}
+</form> -->
+{% endblock %}

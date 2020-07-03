@@ -72,6 +72,23 @@ body {
 	font-style: italic;
 }
 
+.tags {
+	display: flex;
+	justify-content: left;
+	align-items: flex-start;
+	font-size: small;
+	font-weight: bold;
+}
+
+.tag-title {
+	margin-top: 0;
+}
+
+.tag-btn {
+	font-size: 0.5em;
+	font-weight: lighter;
+}
+
 #flash {
 	font-family: 'Lato', sans-serif;
 }
@@ -133,6 +150,10 @@ label {
 
 textarea {
 	resize: none;
+}
+
+.check {
+	margin: 0.3em;
 }
 
 @media (min-width: 670px) {

@@ -3,12 +3,23 @@
 {% block title %}View Posts{% endblock %}
 
 {% block content %}
+<h3>POST DETAILS PAGE</h3>
 <h1>{{post.title}}</h1>
 <p class="text">{{post.content}}</p>
 <p class="date">- By {{post.users.get_fullname()}} on {{post.friendly_date()}}</p>
 
+
+<div class="tags">
+  <p class="tag-title">Tags: </p>
+  {% for tag in post.tags %}
+  <span><a class="pure-button tag-btn" href="/tags/{{tag.id}}">{{tag.name}}</a></span>
+  {% endfor %}
+</div>
+
+
 <a class="btn-link pure-button" href="/posts/{{post.id}}/edit">Edit Post</a>
 <a class="btn-link pure-button cxl" href="/users/{{post.users.id}}">Cancel</a>
 <a class="btn-link pure-button delete" href="/posts/{{post.id}}/delete">Delete</a>
+
 
 {% endblock %}

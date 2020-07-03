@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Tag{% endblock %}
+
+{% block content %}
+<form method="POST" action="/tags/{{tags.id}}/edit" class="pure-form pure-form-stacked">
+  <legend>
+    <h1>Edit a tag</h1>
+  </legend>
+  <fieldset class="pure-group">
+    <label>Name</label>
+    <input type="text" name="name" value="{{tags.name}}" class="pure-u-1 pure-u-md-2-3" required />
+  </fieldset>
+
+  <button type="submit" class="pure-button">Edit tag</button>
+  <a href="/tags" method="POST" class="pure-button delete">Delete</a>
+</form>
+{% endblock %}

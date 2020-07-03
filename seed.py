@@ -1,4 +1,4 @@
-from models import User, Post, db
+from models import User, Post, Tag, db
 import datetime
 from app import app
 
@@ -8,6 +8,7 @@ db.create_all()
 
 # if table isn't empty, empty it
 User.query.delete()
+Post.query.delete()
 
 # Add Users
 john = User(firstname='John', lastname='Conner',
@@ -35,11 +36,19 @@ p5 = Post(title="Soccer",
 p6 = Post(title="Terminator",
           content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. In iste maxime dolorem natus iusto eveniet!", user_id=4)
 
+# =========== PART THREE ============ #
+
+t1 = Tag(name="Fun")
+t2 = Tag(name="Happy")
+t3 = Tag(name="Silly")
+t4 = Tag(name="Python")
+
+
 # Add new objects to session and commit, so they'll persist
 db.session.add_all([john, tommy, queen, jane, james])
 # Commit - Otherwise, this never gets saved
 db.session.commit()
 # Add new objects to session and commit, so they'll persist
-db.session.add_all([p1, p2, p3, p4, p5, p6])
+db.session.add_all([p1, p2, p3, p4, p5, p6, t1, t2, t3, t4])
 # Commit - Otherwise, this never gets saved
 db.session.commit()

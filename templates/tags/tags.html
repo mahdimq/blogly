@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}List Tags{% endblock %}
+
+{% block content %}
+<h3>TAG LIST PAGE</h3>
+<h1>Tags</h1>
+<ul>
+  {% for tag in tags %}
+  <li><a href="/tags/{{tag.id}}">{{tag.name}}</a></li>
+  {% endfor %}
+</ul>
+<a class="pure-button" href="/tags/new">Add Tag</a>
+<a class="pure-button cxl" href="/users">Users</a>
+{% endblock %}

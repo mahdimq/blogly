@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Tag{% endblock %}
+
+{% block content %}
+<h3>NEW TAGS PAGE</h3>
+<form method="POST" action="/tags/new" class="pure-form pure-form-stacked">
+  <legend>
+    <h1>Add a tag</h1>
+  </legend>
+  <fieldset class="pure-group">
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Enter a name for the tag" class="pure-u-1 pure-u-md-2-3" required />
+
+    <ul>
+      {% for tag in tags %}
+      <li>{{tag.name}}</li>
+      {% endfor %}
+    </ul>
+
+  </fieldset>
+
+
+  <a href="/tags" class="pure-button cxl">Cancel</a>
+  <button type="submit" class="pure-button">Add</button>
+</form>
+{% endblock %}
