@@ -10,7 +10,9 @@
   <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
   {% endfor %}
 </ul>
-<a class="pure-button" href="/tags/{{tags.id}}/edit">Edit</a>
-<a class="btn-link pure-button" href="/tags/new">New Tag</a>
-<a class="pure-button delete" href="/tags/{{tags.id}}/delete">Delete</a>
+<form>
+  <a class="pure-button" href="/tags/{{tags.id}}/edit">Edit</a>
+  <a class="btn-link pure-button" href="/tags/new">New Tag</a>
+  <button class="pure-button delete" formmethod="POST" formaction="/tags/{{tags.id}}/delete">Delete</button>
+</form>
 {% endblock %}

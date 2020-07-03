@@ -79,7 +79,7 @@ def edit_user(user_id):
     return redirect(f"/users/{user_id}")
 
 
-@ app.route('/users/<int:user_id>/delete', methods=["GET"])
+@ app.route('/users/<int:user_id>/delete', methods=["POST"])
 def delete_user(user_id):
     """delete a single user"""
     del_user = User.query.get_or_404(user_id)
@@ -108,7 +108,7 @@ def add_post(user_id):
     content = request.form['content']
 
     tag_id = [int(num) for num in request.form.getlist(
-        "tags")]  # <-- explain in_(tag_id)
+        "tags")]
     tags = Tag.query.filter(Tag.id.in_(tag_id)).all()
 
     new_post = Post(title=title, content=content, user_id=user_id, tags=tags)
@@ -154,7 +154,7 @@ def edit_post(post_id):
     return redirect(f"/users/{edit_post.user_id}")
 
 
-@app.route("/posts/<int:post_id>/delete", methods=["GET"])
+@app.route("/posts/<int:post_id>/delete", methods=["POST"])
 def delete_post(post_id):
     """delete specific post and redirect to user page"""
     del_post = Post.query.get_or_404(post_id)
@@ -165,7 +165,6 @@ def delete_post(post_id):
     return redirect(f"/users/{del_post.user_id}")
 
 # ================ TAGS ROUTE ================== #
-
 
 @app.route('/tags')
 def list_tags():
@@ -231,7 +230,7 @@ def edit_tag(tag_id):
     return redirect("/tags")
 
 
-@app.route("/tags/<int:tag_id>/delete", methods=["GET"])
+@app.route("/tags/<int:tag_id>/delete", methods=["POST"])
 def del_tag(tag_id):
     """deletes a specific tag and redirects to tag list"""
 
@@ -244,7 +243,7 @@ def del_tag(tag_id):
     flash("Deleted tag!", "danger")
     return redirect("/tags")
 
-# =============== ERROR 404 PAGE =============≠== #
+# =============== ERROR 404 PAGE ================ #
 
 
 @app.errorhandler(404)

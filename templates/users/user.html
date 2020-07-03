@@ -11,10 +11,13 @@
   </div>
   <div class="profile-main">
     <h3 class="profile-name">{{user.get_fullname()}}</h3>
-    <div class="user-btns">
+
+    <form class="user-btns">
       <a class="btn-link pure-button" href="/users/{{user.id}}/edit">Edit</a>
-      <a class="btn-link pure-button delete" href="/users/{{user.id}}/delete">Delete</a>
-    </div>
+      <button class="btn-link pure-button delete" formmethod="POST"
+        formaction="/users/{{user.id}}/delete">Delete</button>
+    </form>
+
 
     <div class="posts">
       <h3 class="list-title">Posts</h4>

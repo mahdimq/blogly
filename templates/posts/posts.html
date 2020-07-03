@@ -16,10 +16,11 @@
   {% endfor %}
 </div>
 
-
-<a class="btn-link pure-button" href="/posts/{{post.id}}/edit">Edit Post</a>
-<a class="btn-link pure-button cxl" href="/users/{{post.users.id}}">Cancel</a>
-<a class="btn-link pure-button delete" href="/posts/{{post.id}}/delete">Delete</a>
+<form>
+  <a class="btn-link pure-button" href="/posts/{{post.id}}/edit">Edit Post</a>
+  <a class="btn-link pure-button cxl" href="/users/{{post.users.id}}">Cancel</a>
+  <button class="btn-link pure-button delete" formmethod="POST" formaction="/posts/{{post.id}}/delete">Delete</button>
+</form>
 
 
 {% endblock %}
